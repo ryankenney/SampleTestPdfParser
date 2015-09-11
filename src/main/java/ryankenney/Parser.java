@@ -1,6 +1,5 @@
-package rkenney;
+package ryankenney;
 
-import static org.junit.Assert.assertTrue;
 import jacle.common.io.FilesExt;
 
 import java.io.File;
@@ -9,24 +8,25 @@ import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.Test;
-
 import com.google.common.base.Splitter;
 
-public class ParserTool {
-	
-	@Test
-	public void test() throws Exception {
+public class Parser {
 
-		File exportedFile = new File("/home/rkenney/Downloads/VBoxShared/SY0-401.txt"); 
-		File outputFile = new File("/home/rkenney/Downloads/VBoxShared/SY0-401.anki.txt"); 
-		
-		String raw = FilesExt.toString(exportedFile, StandardCharsets.UTF_8);
+	private File inputFile;
+	private File outputFile;
+
+	public Parser(File inputFile, File outputFile) {
+		this.inputFile = inputFile;
+		this.outputFile = outputFile;
+	}
+
+	public void run() {
+		String raw = FilesExt.toString(this.inputFile, StandardCharsets.UTF_8);
 		String withoutPageBreaks = removePageBreaks(raw);
 		String ankiFormat = toAnkiHtmlFormat(withoutPageBreaks);
-		FilesExt.write(ankiFormat, outputFile, StandardCharsets.UTF_8);
+		FilesExt.write(ankiFormat, this.outputFile, StandardCharsets.UTF_8);
 	}
-	
+
 	private String toAnkiHtmlFormat(String string) {
 		StringBuilder ankiFormat = new StringBuilder();
 		LinkedList<String> lines = toQueueOfLines(string);
@@ -66,9 +66,11 @@ public class ParserTool {
 	}
 
 	private static String removePageBreaks(String pdfSource) {
-		Pattern pageBreak = Pattern.compile("(\r?\n)*\"Pass Any Exam. Any Time.\" - www.actualtests.com(\r?\n)*\\d*(\r?\n)*\\fCompTIA SY0-401 Exam", Pattern.DOTALL);
+		Pattern pageBreak = Pattern.compile("(\r?\n)*\"Pass Any Exam. Any Time.\" - www.actualtests.com(\r?\n)*\\d*(\r?\n)*\\fCompTIA [\\w\\-]+ Exam", Pattern.DOTALL);
 		Matcher matcher = pageBreak.matcher(pdfSource);
-		assertTrue(matcher.find());
+		if (!matcher.find())  {
+			throw new RuntimeException("Failed to find any page breaks. This seems suspicious.");
+		}
 		return matcher.replaceAll("");
 	}
 }
