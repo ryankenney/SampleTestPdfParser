@@ -1,4 +1,4 @@
-package ryankenney;
+package ryankenney.actual_test_parser;
 
 @SuppressWarnings("serial")
 public class UsageException extends RuntimeException {
