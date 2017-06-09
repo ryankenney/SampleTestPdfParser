@@ -13,14 +13,6 @@
 
 	<dependencies>
 		<dependency>
-                    <!--
-                        To get this to work ...
-                           git clone https://github.com/MoebiusSolutions/jacle.git
-                           cd jacle
-                           git checkout master
-                           mvn install -DskipTests
-                        Then made sure the jacle.version, groupId and artifactId allign.
-                    -->
 		        <groupId>com.github.MoebiusSolutions.jacle</groupId>
 			<artifactId>jacle-commons</artifactId>
 			<version>${jacle.version}</version>
@@ -29,7 +21,32 @@
 
 	<build>
 		<plugins>
-			<!-- Sets JDK/JRE compliance level-->
+
+			<!-- Builds an executable jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<finalName>${project.artifactId}</finalName>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>ryankenney.actual_test_parser.ParserMain</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Sets JDK/JRE compliance level -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -43,3 +60,4 @@
 	</build>
 
 </project>
+
