@@ -8,42 +8,22 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<jacle.version>1.5</jacle.version>
+		<jacle.version>1.12</jacle.version>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>moesol</id>
-			<url>https://artifactory.moesol.com/artifactory/repo</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
-			<groupId>jacle</groupId>
+                    <!--
+                        To get this to work ...
+                           git clone https://github.com/MoebiusSolutions/jacle.git
+                           cd jacle
+                           git checkout master
+                           mvn install -DskipTests
+                        Then made sure the jacle.version, groupId and artifactId allign.
+                    -->
+		        <groupId>com.github.MoebiusSolutions.jacle</groupId>
 			<artifactId>jacle-commons</artifactId>
 			<version>${jacle.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>mil.navy.mtc2</groupId>
-			<artifactId>paste</artifactId>
-			<version>1.2</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>jacle</groupId>
-			<artifactId>jacle-commons-test</artifactId>
-			<version>${jacle.version}</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
