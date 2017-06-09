@@ -38,3 +38,37 @@ Convert your text file into an anki file:
 	cd SampleTestPdfParser
 	java -jar target/ActualTestPdfParser.jar -i SY0-401.txt -o SY0-401.pdf.anki
 
+Loading into Anki
+----------------
+
+You have to use the deskop app to load the file onto your phone.
+
+Loading into the Anki Desktop App
+----------------
+
+Install [Anki](http://ankisrs.net/). It's available in the Ubuntu repos, but you'll need to manually download the latest .deb if you want to sync with the web and get the "deck" on your phone.
+
+Inside of the Anki desktop app (in my case, Ubuntu), define a new deck:
+
+* Click the "Create Deck" button
+* Name the deck (e.g. "Security Plus") 
+
+Inside of the Anki desktop app, import the questions file:
+
+* Click the "Import" button
+* Select the file
+* Specify your "Deck"
+* Enable "Allow HTML in fields"
+* Click the "Import" button 
+
+NOTE: If you've imported file into another deck, it won't import the entries again (duuumb)
+
+NOTE: If you want to blow away all of your local Anki state, delete the "~/Anki" directory (at least this is true on linux)
+
+Once you have the questions imported, it'll probably have a number in blue (probably "40"). This is the number of new flash cards you have scheduled to review today. You can adjust the preferences of each deck to prompt you for a certain number of questions per day. 
+
+Loading into the Anki Phone App
+----------------
+
+Click the sync button in the upper right corner of the desktop app to initiate a sync. This provides you a way to create an account. Once you get your account going, sync your deck, and setup your phone app with the same account. 
+
