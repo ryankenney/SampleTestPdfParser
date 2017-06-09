@@ -43,8 +43,7 @@ Loading into Anki
 
 You have to use the deskop app to load the file onto your phone.
 
-Loading into the Anki Desktop App
-----------------
+### Loading into the Anki Desktop App
 
 Install [Anki](http://ankisrs.net/). It's available in the Ubuntu repos, but you'll need to manually download the latest .deb if you want to sync with the web and get the "deck" on your phone.
 
@@ -67,8 +66,7 @@ NOTE: If you want to blow away all of your local Anki state, delete the "~/Anki"
 
 Once you have the questions imported, it'll probably have a number in blue (probably "40"). This is the number of new flash cards you have scheduled to review today. You can adjust the preferences of each deck to prompt you for a certain number of questions per day. 
 
-Loading into the Anki Phone App
-----------------
+### Loading into the Anki Phone App
 
 Click the sync button in the upper right corner of the desktop app to initiate a sync. This provides you a way to create an account. Once you get your account going, sync your deck, and setup your phone app with the same account. 
 
