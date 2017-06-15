@@ -36,7 +36,7 @@ Convert your PDF file from a PDF to a text document (using a standard linux tool
 Convert your text file into an anki file:
 
 	cd SampleTestPdfParser
-	java -jar target/ActualTestPdfParser.jar -i SY0-401.txt -o SY0-401.pdf.anki
+	java -jar target/ActualTestPdfParser.jar -i SY0-401.txt -o SY0-401.pdf.anki.txt
 
 Loading into Anki
 ----------------
